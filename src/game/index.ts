@@ -8,6 +8,13 @@ export class Cabo extends Game<Cabo, CaboPlayer> {
   gameEnd = false;
   caboCalled = false;
   caboCalledBy?: CaboPlayer;
+
+  // game variable settings
+  numStartingCards = 4;
+  numPlayers = 2;
+  cardAceValue = 1;
+  cardRedKindValue = 0;
+  cardJokerValue = -1;
 }
 
 export class CaboPlayer extends Player<Cabo, CaboPlayer> {
@@ -34,6 +41,13 @@ export default createGame(CaboPlayer, Cabo, (game) => {
 
   /* Register all custom pieces and spaces */
   game.registerClasses(Card);
+
+  // game variable settings
+  game.numStartingCards = game.setting("numStartingCards") as number;
+  game.numPlayers = game.setting("numPlayers") as number;
+  game.cardAceValue = game.setting("cardAceValue") as number;
+  game.cardRedKindValue = game.setting("cardRedKingValue") as number;
+  game.cardJokerValue = game.setting("cardJokerValue") as number;
 
   /* Create your game board's layout and all included pieces. */
   const board = game.create(Space, "board");
@@ -85,12 +99,14 @@ export default createGame(CaboPlayer, Cabo, (game) => {
         description: "Drawing and swapping",
       })
         .chooseOnBoard("drawn-card", [$.deck.first(Card)!], { skipIf: "never" })
-        // .move("drawn-card")
+        .move("drawn-card", player.my("hand")!) // Step 2: Move drawn card to player's hand
         .chooseOnBoard("chosen-card", player.allMy(Card), {
           prompt: "Choose a card to swap with the drawn card",
           number: 1,
-        })
-        .swap("chosen-card", "drawn-card"),
+        }) // Step 3: Choose card to swap it with
+        .move("drawn-card", player.my("cards")!)
+        .move("chosen-card", $.discardPile),
+    // .do(({""}))
     drawFromDiscard: (player) =>
       action({
         prompt: "Take the top card from the discard pile",
@@ -107,7 +123,7 @@ export default createGame(CaboPlayer, Cabo, (game) => {
       collection: () => game.players,
       do: ({ player }) => {
         console.log(`Dealing cards to player ${player}`);
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < game.numStartingCards; i++) {
           $.deck.first(Card)!.putInto(player.my("cards")!);
         }
       },
