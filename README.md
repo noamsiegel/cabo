@@ -4,6 +4,8 @@
 
 Cabo is a card game where the objective is to minimize the sum of your own cards. Players start with four face-down cards and can use card effects to reveal, manipulate, and swap cards throughout the game. The player with the lowest total score at the end of a round wins.
 
+This project was built with [Boardzilla](https://www.boardzilla.io). Read the docs [here](https://docs.boardzilla.io)
+
 ## Table of Contents
 
 - [Cabo Card Game](#cabo-card-game)
