@@ -11,9 +11,6 @@ Cabo is a card game where the objective is to minimize the sum of your own cards
 	- [Table of Contents](#table-of-contents)
 	- [Installation](#installation)
 	- [Usage](#usage)
-		- [Development](#development)
-	- [Usage](#usage-1)
-		- [Development](#development-1)
 		- [Scripts](#scripts)
 	- [Game Rules](#game-rules)
 	- [Project Structure](#project-structure)
@@ -21,29 +18,13 @@ Cabo is a card game where the objective is to minimize the sum of your own cards
 	- [License](#license)
 
 ## Installation
-
 To install the dependencies, run:
 
 ```bash
-npm install
+yarn install
 ```
 
 ## Usage
-
-### Development
-
-To start the development server, run:
-
-Create a README.md following best practices for this repo
-
-Final Codebase Context
-README.md
-bash
-npm install
-## Usage
-
-### Development
-
 To start the development server, run:
 
 ```bash
@@ -69,7 +50,6 @@ To run tests, use:
 npm test
 ```
 
-
 ### Scripts
 
 The following scripts are available:
@@ -86,11 +66,9 @@ The following scripts are available:
 - `test`: Runs the tests.
 
 ## Game Rules
-
 For detailed game rules, refer to the [CaboRules.md](./CaboRules.md) file.
 
 ## Project Structure
-
 The project structure is as follows:
 
 - **src**: Contains the source code for the game.
@@ -111,7 +89,6 @@ The project structure is as follows:
   - `.gitattributes`: Git attributes configuration.
 
 ## Contributing
-
 Contributions are welcome! Please follow these steps:
 
 1. Fork the repository.
@@ -120,5 +97,4 @@ Contributions are welcome! Please follow these steps:
 4. Submit a pull request.
 
 ## License
-
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
